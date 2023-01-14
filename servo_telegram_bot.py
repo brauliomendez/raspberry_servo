@@ -2,6 +2,8 @@ from servo_controller import ServoController
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
+bot_token = '5838289235:AAFv22bEgZK9Q5TRNPdQ9h1fp5w9A4aNusE'
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Hi!')
 
@@ -16,7 +18,7 @@ async def servo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Done.')
 
 def main():
-    app = Application.builder().token('5838289235:AAFv22bEgZK9Q5TRNPdQ9h1fp5w9A4aNusE').build()
+    app = Application.builder().token(bot_token).build()
     app.add_handler(CommandHandler('start', start))
     app.add_handler(CommandHandler('servo', servo))
     app.add_handler(CommandHandler('dice', dice))
