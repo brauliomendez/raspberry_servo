@@ -9,31 +9,30 @@ async def dice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_dice()
 
 async def move(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Moving...')
-    angle = 90
+    angle = '90'
     try:
-        f = open('last_angle.txt', 'w')
+        f = open('last_angle.txt', 'r')
         angle = f.readline()
         angle = angle.replace('\n', '')
         f.close()
     except:
-        print('Can not read file')
+        await update.message.reply_text('Can not read file')
     servo = ServoController(17, int(angle))
-    if angle == 45:
+    if int(angle) == 45:
         new_angle = 135
-    elif angle == 135:
+    elif int(angle) == 135:
         new_angle = 45
     else:
         new_angle = 45
+    print(new_angle)
     servo.stop()
     servo.degree(new_angle)
     try:
         f = open('last_angle.txt', 'w')
-        f.write(new_angle)
+        f.write(str(new_angle))
         f.close()
     except:
-        print('Can not write file')
-    await update.message.reply_text('Done.')
+        await update.message.reply_text('Can not write file')
 
 async def servo1(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Moving...')
