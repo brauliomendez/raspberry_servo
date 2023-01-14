@@ -36,38 +36,6 @@ class ServoController:
             time_sleep = 0
         time.sleep(time_sleep)
 
-    def example1(self):
-        self.degree(0)
-        self.degree(45)
-        self.degree(90)
-        self.degree(135)
-        self.degree(180)
-        self.degree(135)
-        self.degree(90)
-        self.degree(45)
-        self.degree(0)
-    
-    def example2(self, reps):
-        for i in range(0, reps):
-            self.degree(45)
-            self.degree(135)
-    
-    def example3(self, reps):
-        for i in range(0, reps):
-            self.degree(0)
-            self.degree(180)
-
-    def example4(self, reps):
-        for i in range(0, reps):
-            self.degree(90)
-            self.degree(45)
-            self.degree(135)
-            self.degree(0)
-            self.degree(180)
-            self.degree(45)
-            self.degree(135)
-            self.degree(90)
-
     def stop(self):
         self.p.stop()
         GPIO.cleanup()
